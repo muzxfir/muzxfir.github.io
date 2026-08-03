@@ -1,0 +1,28 @@
+
+.contact-card{
+display:flex;
+align-items:center;
+gap:18px;
+padding:22px;
+border-radius:18px;
+border:1px solid rgba(0,180,255,.35);
+background:#0c1328;
+transition:.25s;
+}
+.contact-card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 30px rgba(0,180,255,.18);
+}
+.contact-icon{
+width:64px;
+height:64px;
+display:grid;
+place-items:center;
+border-radius:16px;
+font-size:34px;
+background:#121c36;
+}
+.github{border-color:#2ea8ff}
+.instagram{border-color:#ff4db8}
+.email{border-color:#19e68c}
+.website{border-color:#8b5cff}
