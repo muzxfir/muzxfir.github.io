@@ -30,6 +30,35 @@ function renderMarkdown(markdown) {
   return `<p>${html}</p>`;
 }
 
+async function loadCustomReadme() {
+  const readmeContent = document.getElementById("readmeContent");
+
+  try {
+    const customResponse = await fetch(
+      `project-content/${encodeURIComponent(repoName)}.md`
+    );
+
+    if (customResponse.ok) {
+      readmeContent.innerHTML = renderMarkdown(await customResponse.text());
+      return;
+    }
+
+    const defaultResponse = await fetch("project-content/default.md");
+
+    if (defaultResponse.ok) {
+      readmeContent.innerHTML = renderMarkdown(await defaultResponse.text());
+      return;
+    }
+
+    readmeContent.innerHTML =
+      "Custom project description has not been added yet.";
+  } catch (error) {
+    console.error(error);
+    readmeContent.innerHTML =
+      "Unable to load the custom project description.";
+  }
+}
+
 async function loadProject() {
   if (!repoName) {
     loading.textContent = "Repository name is missing.";
@@ -37,9 +66,10 @@ async function loadProject() {
   }
 
   try {
-    const repoResponse = await fetch(`https://api.github.com/repos/${USERNAME}/${repoName}`, {
-      headers: { Accept: "application/vnd.github+json" }
-    });
+    const repoResponse = await fetch(
+      `https://api.github.com/repos/${USERNAME}/${repoName}`,
+      { headers: { Accept: "application/vnd.github+json" } }
+    );
 
     if (!repoResponse.ok) {
       throw new Error("Repository could not be loaded.");
@@ -63,7 +93,8 @@ async function loadProject() {
     document.getElementById("downloadLink").href =
       `https://github.com/${USERNAME}/${repoName}/archive/refs/heads/${repo.default_branch}.zip`;
 
-    const liveUrl = repo.homepage ||
+    const liveUrl =
+      repo.homepage ||
       (repo.has_pages ? `https://${USERNAME}.github.io/${repoName}/` : "");
 
     if (liveUrl) {
@@ -77,14 +108,7 @@ async function loadProject() {
       .map(topic => `<span>${escapeHtml(topic)}</span>`)
       .join("");
 
-    const readmeResponse = await fetch(
-      `https://api.github.com/repos/${USERNAME}/${repoName}/readme`,
-      { headers: { Accept: "application/vnd.github.raw+json" } }
-    );
-
-    document.getElementById("readmeContent").innerHTML = readmeResponse.ok
-      ? renderMarkdown(await readmeResponse.text())
-      : "README is not available for this repository.";
+    await loadCustomReadme();
 
     loading.classList.add("hidden");
     details.classList.remove("hidden");
