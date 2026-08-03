@@ -1,52 +1,121 @@
+const USERNAME = "muzxfir";
+const repoName = new URLSearchParams(window.location.search).get("repo");
 
-const USERNAME="muzxfir";
-const repo=new URLSearchParams(location.search).get("repo");
-const loading=document.getElementById("projectLoading");
-const details=document.getElementById("projectDetails");
+const loading = document.getElementById("projectLoading");
+const details = document.getElementById("projectDetails");
 
-function escapeHtml(value=""){
-  return value.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+function escapeHtml(value = "") {
+  return value.replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[char]));
 }
-function simpleMarkdown(md){
-  let html=escapeHtml(md);
-  html=html.replace(/^### (.*)$/gm,"<h3>$1</h3>")
-           .replace(/^## (.*)$/gm,"<h2>$1</h2>")
-           .replace(/^# (.*)$/gm,"<h1>$1</h1>")
-           .replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
-           .replace(/`([^`]+)`/g,"<code>$1</code>")
-           .replace(/\n\n/g,"</p><p>")
-           .replace(/\n/g,"<br>");
+
+function renderMarkdown(markdown) {
+  let html = escapeHtml(markdown);
+
+  html = html
+    .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.*)$/gm, "<h1>$1</h1>")
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>')
+    .replace(/\n\n/g, "</p><p>")
+    .replace(/\n/g, "<br>");
+
   return `<p>${html}</p>`;
 }
-async function init(){
-  if(!repo){loading.textContent="Repository name is missing.";return;}
-  try{
-    const rRes=await fetch(`https://api.github.com/repos/${USERNAME}/${repo}`);
-    if(!rRes.ok) throw new Error("Repository not found");
-    const data=await rRes.json();
 
-    projectTitle.textContent=data.name;
-    projectDescription.textContent=data.description||"No description available.";
-    projectLanguage.textContent=data.language||"Repository";
-    projectStars.textContent=data.stargazers_count;
-    projectForks.textContent=data.forks_count;
-    projectIssues.textContent=data.open_issues_count;
-    githubLink.href=data.html_url;
-    downloadLink.href=`https://github.com/${USERNAME}/${repo}/archive/refs/heads/${data.default_branch}.zip`;
+async function loadCustomReadme() {
+  const readmeContent = document.getElementById("readmeContent");
 
-    const live=data.homepage||(data.has_pages?`https://${USERNAME}.github.io/${repo}/`:"");
-    if(live){liveLink.href=live;liveLink.classList.remove("hidden");}
+  try {
+    const customResponse = await fetch(
+      `project-content/${encodeURIComponent(repoName)}.md`
+    );
 
-    const readmeRes=await fetch(`https://api.github.com/repos/${USERNAME}/${repo}/readme`,{
-      headers:{Accept:"application/vnd.github.raw+json"}
-    });
-    readmeContent.innerHTML=readmeRes.ok?simpleMarkdown(await readmeRes.text()):"README not available.";
+    if (customResponse.ok) {
+      readmeContent.innerHTML = renderMarkdown(await customResponse.text());
+      return;
+    }
+
+    const defaultResponse = await fetch("project-content/default.md");
+
+    if (defaultResponse.ok) {
+      readmeContent.innerHTML = renderMarkdown(await defaultResponse.text());
+      return;
+    }
+
+    readmeContent.innerHTML =
+      "Custom project description has not been added yet.";
+  } catch (error) {
+    console.error(error);
+    readmeContent.innerHTML =
+      "Unable to load the custom project description.";
+  }
+}
+
+async function loadProject() {
+  if (!repoName) {
+    loading.textContent = "Repository name is missing.";
+    return;
+  }
+
+  try {
+    const repoResponse = await fetch(
+      `https://api.github.com/repos/${USERNAME}/${repoName}`,
+      { headers: { Accept: "application/vnd.github+json" } }
+    );
+
+    if (!repoResponse.ok) {
+      throw new Error("Repository could not be loaded.");
+    }
+
+    const repo = await repoResponse.json();
+
+    document.title = `${repo.name} | MUZXFIR HUB`;
+    document.getElementById("projectTitle").textContent = repo.name;
+    document.getElementById("projectDescription").textContent =
+      repo.description || "No description is available for this repository.";
+    document.getElementById("projectLanguage").textContent =
+      repo.language || "Repository";
+    document.getElementById("projectStars").textContent = repo.stargazers_count;
+    document.getElementById("projectForks").textContent = repo.forks_count;
+    document.getElementById("projectIssues").textContent = repo.open_issues_count;
+    document.getElementById("projectLicense").textContent =
+      repo.license?.spdx_id || "None";
+
+    document.getElementById("githubLink").href = repo.html_url;
+    document.getElementById("downloadLink").href =
+      `https://github.com/${USERNAME}/${repoName}/archive/refs/heads/${repo.default_branch}.zip`;
+
+    const liveUrl =
+      repo.homepage ||
+      (repo.has_pages ? `https://${USERNAME}.github.io/${repoName}/` : "");
+
+    if (liveUrl) {
+      const liveLink = document.getElementById("liveLink");
+      liveLink.href = liveUrl;
+      liveLink.classList.remove("hidden");
+    }
+
+    const tags = document.getElementById("projectTags");
+    tags.innerHTML = (repo.topics || [])
+      .map(topic => `<span>${escapeHtml(topic)}</span>`)
+      .join("");
+
+    await loadCustomReadme();
 
     loading.classList.add("hidden");
     details.classList.remove("hidden");
-  }catch(e){
-    console.error(e);
-    loading.textContent="Unable to load this project.";
+  } catch (error) {
+    console.error(error);
+    loading.textContent = "Unable to load this project. Please try again later.";
   }
 }
-init();
+
+loadProject();
