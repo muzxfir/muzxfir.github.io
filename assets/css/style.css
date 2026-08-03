@@ -905,3 +905,6 @@ a.info-box:hover {
   .featured-grid { grid-template-columns: 1fr; }
   .featured-section { padding-top: 70px; }
 }
+.hero-actions i{
+    margin-right:8px;
+}
