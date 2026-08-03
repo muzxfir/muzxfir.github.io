@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | MUZXFIR</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="index.html">MUZXFIR</a>
+    <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  </div>
+</header>
+
+<main class="container section">
+  <a class="back-link" href="index.html">← Back to projects</a>
+  <div id="projectLoading">Loading project...</div>
+
+  <article id="projectDetails" class="project-details hidden">
+    <span id="projectLanguage" class="tag"></span>
+    <h1 id="projectTitle"></h1>
+    <p id="projectDescription" class="lead"></p>
+
+    <div class="detail-stats">
+      <div><strong id="projectStars">0</strong><span>Stars</span></div>
+      <div><strong id="projectForks">0</strong><span>Forks</span></div>
+      <div><strong id="projectIssues">0</strong><span>Issues</span></div>
+    </div>
+
+    <div class="actions">
+      <a id="githubLink" class="btn primary" target="_blank" rel="noreferrer">View on GitHub</a>
+      <a id="liveLink" class="btn hidden" target="_blank" rel="noreferrer">Live Demo</a>
+      <a id="downloadLink" class="btn" target="_blank" rel="noreferrer">Download ZIP</a>
+    </div>
+
+    <section class="readme-section">
+      <h2>README</h2>
+      <div id="readmeContent" class="readme-content">Loading README...</div>
+    </section>
+  </article>
+</main>
+
+<script src="assets/js/project.js"></script>
+</body>
+</html>
