@@ -922,3 +922,90 @@ a.info-box:hover {
     align-items:center;
     gap:18px;
 }
+.about-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 30px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--green);
+  background: rgba(87, 242, 189, .07);
+  border: 1px solid rgba(87, 242, 189, .22);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 14px var(--green);
+}
+
+.about-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.about-icon {
+  min-width: 46px;
+  font-size: 34px;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.about-box h3 {
+  margin: 0 0 8px;
+}
+
+.skills-section {
+  margin-top: 50px;
+}
+
+.skills-section h2 {
+  font-family: "Orbitron", sans-serif;
+  margin: 10px 0 22px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills-grid span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #d9e7ff;
+  background: rgba(255, 255, 255, .035);
+  border: 1px solid var(--line);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.skills-grid i {
+  margin-right: 7px;
+  color: var(--cyan);
+}
+
+.about-actions {
+  margin-top: 36px;
+}
+
+.about-actions i {
+  margin-right: 8px;
+}
+
+@media (max-width: 650px) {
+  .about-box {
+    gap: 14px;
+  }
+
+  .about-icon {
+    min-width: 38px;
+    font-size: 28px;
+  }
+}
