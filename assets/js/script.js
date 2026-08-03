@@ -112,6 +112,7 @@ async function loadGitHubData() {
       repositories.reduce((total, repo) => total + repo.stargazers_count, 0);
 
     populateLanguages();
+    renderFeaturedProjects();
     renderRepositories();
   } catch (error) {
     console.error(error);
@@ -145,3 +146,47 @@ function createParticles() {
 }
 
 createParticles();
+
+
+const FEATURED_REPOSITORIES = [
+  "Auto-Filter-v7",
+  "MovieVault-v2",
+  "TipTop-LuckyDraw",
+  "MUZXFIR-HUB"
+];
+
+function renderFeaturedProjects() {
+  const featuredGrid = document.getElementById("featuredGrid");
+  if (!featuredGrid) return;
+
+  const featuredRepos = FEATURED_REPOSITORIES
+    .map(name => repositories.find(repo => repo.name.toLowerCase() === name.toLowerCase()))
+    .filter(Boolean);
+
+  if (!featuredRepos.length) {
+    featuredGrid.innerHTML = '<div class="empty-state">Featured repositories are not available.</div>';
+    return;
+  }
+
+  featuredGrid.innerHTML = featuredRepos.map(repo => {
+    const demoUrl = getDemoUrl(repo);
+    return `
+      <article class="featured-card">
+        <span class="featured-badge">★ Featured</span>
+        <h3>${escapeHtml(repo.name)}</h3>
+        <p>${escapeHtml(repo.description || "Featured open-source project by MUZXFIR.")}</p>
+        <div class="featured-meta">
+          ${repo.language ? `<span>${escapeHtml(repo.language)}</span>` : ""}
+          <span>★ ${repo.stargazers_count}</span>
+          <span>⑂ ${repo.forks_count}</span>
+          <span>${formatDate(repo.updated_at)}</span>
+        </div>
+        <div class="featured-actions">
+          <a href="project.html?repo=${encodeURIComponent(repo.name)}">Details</a>
+          <a href="${repo.html_url}" target="_blank" rel="noreferrer">GitHub</a>
+          ${demoUrl ? `<a href="${demoUrl}" target="_blank" rel="noreferrer">Live Demo</a>` : ""}
+        </div>
+      </article>
+    `;
+  }).join("");
+}
