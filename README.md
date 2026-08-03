@@ -1,70 +1,68 @@
-# muzxfir.github.io
+# MUZXFIR HUB
 
-Simple and working GitHub portfolio website.
+A dark neon developer portfolio that automatically loads all public repositories from the GitHub account **muzxfir**.
 
-## Features
+## Files
 
-- GitHub profile auto load
-- All public repositories auto load
-- Search
-- Language filter
-- Sort by update, stars or name
-- Project details page
-- README preview
-- GitHub, demo and ZIP download buttons
-- About page
-- Contact page
-- 404 page
-- Mobile responsive layout
+- `index.html` — website structure
+- `style.css` — full responsive neon design
+- `script.js` — GitHub profile and repository API integration
 
-## Upload
+## Publish with GitHub Pages
 
-Upload all files and folders to the root of:
+1. Use the existing public repository `muzxfir.github.io`.
+2. Upload `index.html`, `style.css`, and `script.js`.
+3. Open the repository:
+   `Settings → Pages`
+4. Under **Build and deployment**, choose:
+   - Source: `Deploy from a branch`
+   - Branch: `main`
+   - Folder: `/ (root)`
+5. Save.
 
-`https://github.com/muzxfir/muzxfir.github.io`
+Your site should be available at:
 
-Keep this structure:
+`https://muzxfir.github.io/`
 
-```text
-index.html
-project.html
-about.html
-contact.html
-404.html
-assets/
-  css/style.css
-  js/app.js
-  js/project.js
-README.md
+## Enable comments with Giscus
+
+1. In the website repository, open:
+   `Settings → General → Features`
+2. Enable **Discussions**.
+3. Install the Giscus GitHub App for the website repository.
+4. Open `https://giscus.app`.
+5. Enter your repository as:
+   `muzxfir/muzxfir.github.io`
+6. Select a Discussions category, such as **General**.
+7. Copy the generated `<script>` code.
+8. In `index.html`, find the `GISCUS SETUP` comment.
+9. Remove the placeholder card and paste the generated script inside `.comments-card`.
+
+Example placement:
+
+```html
+<div class="comments-card">
+  <!-- Paste the generated Giscus script here -->
+</div>
 ```
 
-## Enable GitHub Pages
+Giscus commenters must sign in with GitHub. Comments are stored in GitHub Discussions.
 
-Open:
+## Change GitHub username
 
-`Settings → Pages`
+In `script.js`, edit:
 
-Choose:
+```js
+const GITHUB_USERNAME = "muzxfir";
+```
 
-- Source: Deploy from a branch
-- Branch: main
-- Folder: / (root)
+Also update GitHub links inside `index.html`.
 
-Website:
+## Notes
 
-`https://muzxfir.github.io`
+The public GitHub API can be used without a token, but GitHub applies an unauthenticated rate limit. For a normal personal portfolio, this is usually sufficient.
 
-## Enable Giscus comments
 
-1. Open repository Settings.
-2. Under General → Features, enable Discussions.
-3. Install the Giscus GitHub App for this repository.
-4. Open giscus.app.
-5. Enter `muzxfir/muzxfir.github.io`.
-6. Choose a Discussions category.
-7. Copy the generated script.
-8. Open `index.html`.
-9. Find: `Paste your generated Giscus script here`.
-10. Paste the script inside the comments box.
+## V2 Upgrade
 
-Comments will not work until this Giscus setup is completed.
+Includes animated particles, enhanced cyberpunk background, premium hero styling, improved cards and mobile polish.

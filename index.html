@@ -1,97 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MUZXFIR GitHub portfolio and projects">
-  <title>MUZXFIR | GitHub Projects</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MUZXFIR GitHub projects, developer portfolio and community comments." />
+  <meta name="theme-color" content="#050816" />
+  <title>MUZXFIR HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="logo" href="index.html">MUZXFIR</a>
-    <button id="menuBtn" class="menu-btn" aria-label="Open menu">☰</button>
-    <nav id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="grid-overlay"></div>
+  <div class="particles" id="particles"></div>
+
+  <header class="nav-wrap">
+    <nav class="navbar container">
+      <a class="brand" href="#home"><span>&lt;</span>MUZXFIR<span>/&gt;</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#community">Community</a>
+        <a href="https://github.com/muzxfir" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <section class="hero container">
-    <div>
-      <span class="tag">Developer Portfolio</span>
-      <h1>My GitHub Projects</h1>
-      <p>All my public repositories are loaded automatically from GitHub.</p>
-      <div class="actions">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn" href="https://github.com/muzxfir" target="_blank" rel="noreferrer">GitHub Profile</a>
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> MUZXFIR DIGITAL LAB</div>
+        <h1>Build.<br>Share.<br><span>Explore.</span></h1>
+        <p>
+          Welcome to MUZXFIR HUB — a futuristic developer space where my GitHub repositories, bots, web projects and open-source experiments come together.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn secondary" href="https://github.com/muzxfir" target="_blank" rel="noreferrer">View GitHub</a>
+        </div>
+        <div class="hero-badges">
+          <span>Telegram Bots</span>
+          <span>Web Development</span>
+          <span>Open Source</span>
+        </div>
+        <div class="stats">
+          <div><strong id="repoCount">--</strong><span>Repositories</span></div>
+          <div><strong id="followersCount">--</strong><span>Followers</span></div>
+          <div><strong id="starsCount">--</strong><span>Total Stars</span></div>
+        </div>
       </div>
-    </div>
 
-    <div class="profile-card">
-      <img id="avatar" src="https://github.com/muzxfir.png" alt="GitHub profile photo">
-      <div>
-        <h2 id="profileName">MUZXFIR</h2>
-        <p id="profileBio">Loading profile...</p>
+      <div class="hero-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+          <small>profile.js</small>
+        </div>
+        <div class="profile-panel">
+          <img id="avatar" src="https://github.com/muzxfir.png" alt="MUZXFIR GitHub profile" />
+          <div>
+            <small>GitHub Developer</small>
+            <h2 id="profileName">MUZXFIR</h2>
+            <p id="profileBio">Telegram Bot Developer • Web Developer • Open Source</p>
+          </div>
+        </div>
+        <pre><code><span class="pink">const</span> developer = {
+  username: <span class="green">"muzxfir"</span>,
+  focus: [<span class="green">"Bots"</span>, <span class="green">"Web"</span>, <span class="green">"Open Source"</span>],
+  status: <span class="green">"Building cool things"</span>
+};</code></pre>
+        <div class="scan-line"></div>
       </div>
-      <div class="profile-stats">
-        <div><strong id="repoCount">--</strong><span>Repositories</span></div>
-        <div><strong id="followersCount">--</strong><span>Followers</span></div>
-        <div><strong id="starsCount">--</strong><span>Stars</span></div>
+    </section>
+
+    <section class="projects-section container" id="projects">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">MY WORK</span>
+          <h2>Featured Repositories</h2>
+          <p>Public repositories are loaded automatically from GitHub.</p>
+        </div>
+        <a href="https://github.com/muzxfir?tab=repositories" target="_blank" rel="noreferrer">View all on GitHub ↗</a>
       </div>
-    </div>
-  </section>
 
-  <section class="container section" id="projects">
-    <div class="section-head">
-      <div>
-        <span class="tag">Projects</span>
-        <h2>Public Repositories</h2>
+      <div class="toolbar">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search projects..." />
+        </label>
+        <select id="languageFilter" aria-label="Filter by language">
+          <option value="all">All languages</option>
+        </select>
+        <select id="sortSelect" aria-label="Sort repositories">
+          <option value="updated">Recently updated</option>
+          <option value="stars">Most stars</option>
+          <option value="name">Name A–Z</option>
+        </select>
       </div>
-    </div>
 
-    <div class="toolbar">
-      <input id="searchInput" type="search" placeholder="Search repositories...">
-      <select id="languageFilter">
-        <option value="all">All languages</option>
-      </select>
-      <select id="sortSelect">
-        <option value="updated">Recently updated</option>
-        <option value="stars">Most stars</option>
-        <option value="name">Name A-Z</option>
-      </select>
-    </div>
+      <div id="loading" class="loading">Loading repositories<span>.</span><span>.</span><span>.</span></div>
+      <div id="projectsGrid" class="projects-grid"></div>
+      <div id="emptyState" class="empty-state hidden">No matching repositories found.</div>
+    </section>
 
-    <p id="loading">Loading repositories...</p>
-    <div id="projectsGrid" class="projects-grid"></div>
-    <p id="emptyState" class="hidden">No repositories found.</p>
-  </section>
+    <section class="community-section" id="community">
+      <div class="container community-grid">
+        <div>
+          <span class="kicker">COMMUNITY</span>
+          <h2>Join the conversation</h2>
+          <p>
+            Share feedback, ideas or questions about my projects. Comments are powered by
+            GitHub Discussions through Giscus.
+          </p>
+          <div class="community-note">
+            <strong>Before comments work:</strong>
+            enable Discussions in this website repository, install Giscus, then replace
+            the placeholder values in <code>index.html</code>.
+          </div>
+        </div>
 
-  <section class="comments-section">
-    <div class="container">
-      <span class="tag">Community</span>
-      <h2>Comments</h2>
-      <div class="comments-box">
-        <p>Giscus comments can be enabled after GitHub Discussions is turned on.</p>
-        <p class="small">Instructions are included in README.md.</p>
-        <!-- Paste your generated Giscus script here -->
+        <div class="comments-card">
+          <div class="comments-placeholder" id="commentsPlaceholder">
+            <div class="comment-icon">💬</div>
+            <h3>Comments setup required</h3>
+            <p>Follow the README instructions to connect Giscus.</p>
+          </div>
+
+          <!--
+            GISCUS SETUP:
+            1. Enable GitHub Discussions in this repository.
+            2. Visit https://giscus.app and generate your script.
+            3. Replace this commented block with the generated script.
+          -->
+        </div>
       </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#home"><span>&lt;</span>MUZXFIR<span>/&gt;</span></a>
+      <p>Designed and built by MUZXFIR.</p>
+      <a href="https://github.com/muzxfir" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>
-  <div class="container footer-inner">
-    <span>© 2026 MUZXFIR</span>
-    <a href="https://github.com/muzxfir" target="_blank" rel="noreferrer">GitHub</a>
-  </div>
-</footer>
-
-<script src="assets/js/app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
