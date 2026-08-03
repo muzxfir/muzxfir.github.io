@@ -452,3 +452,203 @@ footer { border-top: 1px solid var(--line); }
   .projects-section, .community-section { padding-block: 80px; }
   .footer-inner { flex-direction: column; justify-content: center; text-align: center; padding: 30px 0; }
 }
+
+
+/* ===== MUZXFIR HUB V2 PREMIUM UPGRADE ===== */
+
+body {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 198, 255, .14), transparent 26%),
+    radial-gradient(circle at 82% 14%, rgba(133, 72, 255, .18), transparent 30%),
+    radial-gradient(circle at 48% 82%, rgba(0, 255, 200, .07), transparent 32%),
+    #030612;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(53, 216, 255, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 216, 255, .025) 1px, transparent 1px);
+  background-size: 36px 36px;
+  animation: premiumGrid 18s linear infinite;
+  z-index: -2;
+}
+
+@keyframes premiumGrid {
+  from { transform: translateY(0); }
+  to { transform: translateY(36px); }
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  opacity: .55;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  from { transform: translateY(110vh) scale(.6); opacity: 0; }
+  15% { opacity: .65; }
+  to { transform: translateY(-15vh) scale(1.2); opacity: 0; }
+}
+
+.nav-wrap {
+  background: rgba(3, 6, 18, .66);
+  box-shadow: 0 10px 40px rgba(0,0,0,.22);
+}
+
+.navbar {
+  min-height: 78px;
+}
+
+.brand {
+  font-size: 1.02rem;
+  text-shadow: 0 0 20px rgba(53, 216, 255, .28);
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 78px);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(3.8rem, 9vw, 7.2rem);
+  text-shadow: 0 0 44px rgba(53, 216, 255, .09);
+}
+
+.hero h1 span {
+  -webkit-text-stroke: 1.5px var(--cyan);
+  text-shadow:
+    0 0 18px rgba(53,216,255,.45),
+    0 0 44px rgba(85,119,255,.22);
+}
+
+.hero-copy > p {
+  font-size: 1.12rem;
+  max-width: 660px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.hero-badges span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #c9f8ff;
+  background: rgba(53,216,255,.06);
+  border: 1px solid rgba(53,216,255,.16);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+  transition: transform .55s ease;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #41e5ff, #5bf6c8);
+  box-shadow:
+    0 12px 34px rgba(53,216,255,.28),
+    0 0 36px rgba(53,216,255,.12);
+}
+
+.btn.secondary {
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+}
+
+.hero-card {
+  transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.hero-card:hover {
+  transform: perspective(1000px) rotateY(0) rotateX(0) translateY(-4px);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.42),
+    0 0 45px rgba(53,216,255,.08);
+}
+
+.projects-section {
+  position: relative;
+}
+
+.project-card {
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(145deg, rgba(15, 24, 52, .78), rgba(6, 10, 26, .74));
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(53,216,255,.28), transparent 35%, rgba(157,92,255,.2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.repo-icon {
+  font-size: 1.15rem;
+  box-shadow: inset 0 0 18px rgba(53,216,255,.06);
+}
+
+.comments-card {
+  backdrop-filter: blur(18px);
+}
+
+@media (max-width: 650px) {
+  .hero h1 {
+    font-size: 3.55rem;
+  }
+
+  .hero-card {
+    transform: none;
+  }
+
+  .hero-badges {
+    gap: 8px;
+  }
+}

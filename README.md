@@ -61,3 +61,8 @@ Also update GitHub links inside `index.html`.
 ## Notes
 
 The public GitHub API can be used without a token, but GitHub applies an unauthenticated rate limit. For a normal personal portfolio, this is usually sufficient.
+
+
+## V2 Upgrade
+
+Includes animated particles, enhanced cyberpunk background, premium hero styling, improved cards and mobile polish.
