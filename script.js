@@ -67,6 +67,7 @@ function renderRepositories() {
           <span>${formatDate(repo.updated_at)}</span>
         </div>
         <div class="repo-actions">
+          <a href="project.html?repo=${encodeURIComponent(repo.name)}">Details</a>
           <a href="${repo.html_url}" target="_blank" rel="noreferrer">GitHub</a>
           ${demoUrl ? `<a href="${demoUrl}" target="_blank" rel="noreferrer">Live Demo</a>` : ""}
         </div>

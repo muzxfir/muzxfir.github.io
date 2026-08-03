@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Details | MUZXFIR</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MUZXFIR project details and README." />
+  <title>Project | MUZXFIR HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="logo" href="index.html">MUZXFIR</a>
-    <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-  </div>
-</header>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="grid-overlay"></div>
 
-<main class="container section">
-  <a class="back-link" href="index.html">← Back to projects</a>
-  <div id="projectLoading">Loading project...</div>
+  <header class="nav-wrap">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span>&lt;</span>MUZXFIR<span>/&gt;</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-  <article id="projectDetails" class="project-details hidden">
-    <span id="projectLanguage" class="tag"></span>
-    <h1 id="projectTitle"></h1>
-    <p id="projectDescription" class="lead"></p>
+  <main class="container subpage-main">
+    <a class="back-link" href="index.html#projects">← Back to projects</a>
+    <div id="projectLoading" class="loading">Loading project...</div>
 
-    <div class="detail-stats">
-      <div><strong id="projectStars">0</strong><span>Stars</span></div>
-      <div><strong id="projectForks">0</strong><span>Forks</span></div>
-      <div><strong id="projectIssues">0</strong><span>Issues</span></div>
+    <article id="projectDetails" class="project-details-card hidden">
+      <span id="projectLanguage" class="kicker">Repository</span>
+      <h1 id="projectTitle"></h1>
+      <p id="projectDescription" class="project-lead"></p>
+
+      <div class="detail-stats">
+        <div><strong id="projectStars">0</strong><span>Stars</span></div>
+        <div><strong id="projectForks">0</strong><span>Forks</span></div>
+        <div><strong id="projectIssues">0</strong><span>Open Issues</span></div>
+        <div><strong id="projectLicense">None</strong><span>License</span></div>
+      </div>
+
+      <div id="projectTags" class="project-tags"></div>
+
+      <div class="hero-actions">
+        <a id="githubLink" class="btn primary" target="_blank" rel="noreferrer">View on GitHub</a>
+        <a id="liveLink" class="btn secondary hidden" target="_blank" rel="noreferrer">Live Demo</a>
+        <a id="downloadLink" class="btn secondary" target="_blank" rel="noreferrer">Download ZIP</a>
+      </div>
+
+      <section class="readme-section">
+        <h2>README</h2>
+        <div id="readmeContent" class="readme-content">Loading README...</div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="index.html"><span>&lt;</span>MUZXFIR<span>/&gt;</span></a>
+      <p>Designed and built by MUZXFIR.</p>
+      <a href="https://github.com/muzxfir" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
+  </footer>
 
-    <div class="actions">
-      <a id="githubLink" class="btn primary" target="_blank" rel="noreferrer">View on GitHub</a>
-      <a id="liveLink" class="btn hidden" target="_blank" rel="noreferrer">Live Demo</a>
-      <a id="downloadLink" class="btn" target="_blank" rel="noreferrer">Download ZIP</a>
-    </div>
-
-    <section class="readme-section">
-      <h2>README</h2>
-      <div id="readmeContent" class="readme-content">Loading README...</div>
-    </section>
-  </article>
-</main>
-
-<script src="assets/js/project.js"></script>
+  <script src="project.js"></script>
 </body>
 </html>
