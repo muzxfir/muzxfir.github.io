@@ -1009,3 +1009,43 @@ a.info-box:hover {
     font-size: 28px;
   }
 }
+.footer-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    text-align:center;
+}
+
+.footer-brand p{
+    color:#9fb2d8;
+    margin-top:10px;
+}
+
+.footer-social{
+    display:flex;
+    gap:18px;
+}
+
+.footer-social a{
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    color:#35d8ff;
+    font-size:22px;
+    transition:.3s;
+}
+
+.footer-social a:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(53,216,255,.35);
+}
+
+.footer-copy{
+    color:#9fb2d8;
+    font-size:.9rem;
+}
