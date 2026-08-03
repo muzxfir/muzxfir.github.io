@@ -1026,26 +1026,33 @@ a.info-box:hover {
     display:flex;
     gap:18px;
 }
-
 .footer-social a{
-    width:48px;
-    height:48px;
+    width:50px;
+    height:50px;
     display:flex;
     align-items:center;
     justify-content:center;
     border-radius:50%;
-    background:rgba(255,255,255,.05);
+    background:#16213a;
+    border:1px solid rgba(53,216,255,.25);
     color:#35d8ff;
-    font-size:22px;
-    transition:.3s;
+    font-size:24px;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.footer-social a i{
+    color:#35d8ff;
+    font-size:24px;
 }
 
 .footer-social a:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 20px rgba(53,216,255,.35);
+    background:#35d8ff;
+    color:#08111f;
+    transform:translateY(-4px);
+    box-shadow:0 0 18px rgba(53,216,255,.45);
 }
 
-.footer-copy{
-    color:#9fb2d8;
-    font-size:.9rem;
+.footer-social a:hover i{
+    color:#08111f;
 }
