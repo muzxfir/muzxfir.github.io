@@ -905,3 +905,20 @@ a.info-box:hover {
   .featured-grid { grid-template-columns: 1fr; }
   .featured-section { padding-top: 70px; }
 }
+.contact-big-icon{
+    font-size:42px;
+    color:#35d8ff;
+    min-width:50px;
+}
+
+.arrow-icon{
+    margin-left:auto;
+    color:#35d8ff;
+    font-size:18px;
+}
+
+.info-box{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
