@@ -65,4 +65,4 @@ The public GitHub API can be used without a token, but GitHub applies an unauthe
 
 ## V2 Upgrade
 
-Includes animated particles, enhanced cyberpunk background, premium hero styling, improved cards and mobile polish.
+Includes animated particles, enhanced cyberpunk background, premium hero styling, improved cards and mobile polish..
